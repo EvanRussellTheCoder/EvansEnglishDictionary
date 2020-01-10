@@ -31,4 +31,3 @@ if type(output) == list:#makes sure that the strings returned by the translate f
         print(item)
 else:
     print(output)
-    
