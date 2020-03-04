@@ -3,17 +3,23 @@ from difflib import get_close_matches
 
 data = json.load(open("data.json"))
 
-def translate(w):#w is short for word, I put w instead because I already made a word variable on line 25
-    w = w.lower()#in case someone types the word in capitals then they can still receive the word back
+#w is short for word, I put w instead because I already made a word variable on line 25
+def translate(w):
+    #in case someone types the word in capitals then they can still receive the word back
+    w = w.lower()
     if w in data: 
         return data[w]
-    elif w.title() in data:#makes sure proper nouns are properly written because grammar is important
+    #makes sure proper nouns are properly written because grammar is important
+    elif w.title() in data:
         return data[w.title()]
-    elif w.upper() in data:#makes sure acronyms are all capital because grammar is important
+    #makes sure acronyms are all capital because grammar is important
+    elif w.upper() in data:
         return data[w.upper()]
-    elif len(get_close_matches(w, data.keys())) > 0:#measures the ratio of how close a typed word is to an actual word in the dictionary
+    #measures the ratio of how close a typed word is to an actual word in the dictionary
+    elif len(get_close_matches(w, data.keys())) > 0:
         yn = input("Did you mean %s instead of that jibberish you just typed in? Enter Y if yes, or N if no: " % get_close_matches(w, data.keys())[0])
-        if yn == "Y":#yn means "yes no"
+        #yn means "yes no"
+        if yn == "Y":
             return data[get_close_matches(w, data.keys())[0]]
         elif yn == "N":
             return "Well, according to this dictionary, the word you typed in is nonsense. Try typing an actual word, this time."
@@ -26,8 +32,10 @@ word = input("Enter a word into Evan's Dictionary that you would like to look up
 
 output = translate(word)
 
-if type(output) == list:#makes sure that the strings returned by the translate function aren't wonky from the code on lines 26-29
-    for item in output:#makes sure each definition is printed in a different row. Makes it look organized
+#makes sure that the strings returned by the translate function aren't wonky from the code on lines 26-29
+if type(output) == list:
+    #makes sure each definition is printed in a different row. Makes it look organized
+    for item in output:
         print(item)
 else:
     print(output)
