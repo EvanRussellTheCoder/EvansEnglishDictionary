@@ -3,7 +3,7 @@ from difflib import get_close_matches
 
 data = json.load(open("data.json"))
 
-#w is short for word, I put w instead because I already made a word variable on line 33
+#w is short for word, I put w instead because I already made a word variable on line 31
 def translate(w):
     #in case someone types the word in capitals then they can still receive the word back
     w = w.lower()
