@@ -1,4 +1,4 @@
-#Note that I made this with the guidance of Ardit Sulce's Udemy course "The Python Mega Course".
+#Note that I made this with the guidance of Ardit Sulce's Udemy course "The Python Mega Course"
 import json
 from difflib import get_close_matches
 
